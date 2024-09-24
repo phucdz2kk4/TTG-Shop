@@ -9,7 +9,7 @@ block main
                 .btn-group-toggle.no-boder.edit.padding(data-toggle='buttons')
                     each item in filterStatus
                         button(
-                            class=`btn btn-outline-success margin ${item.class}` 
+                            class=`btn btn-outline-success margin ${item.class == 'active' ? 'active' : ''}` 
                             button-status=item.status
                          ) #{item.name}
                         //- button(class='btn btn-outline-success margin' button-status="active") Active

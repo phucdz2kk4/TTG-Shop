@@ -10,12 +10,12 @@ module.exports.index = async (req, res) => {
         {
             name: "Active",
             status: "active",
-            class: "active"
+            class: ""
         },
         {
             name: "Inactive",
             status: "inactive",
-            class: "active"
+            class: ""
         }
     ]
     if(req.query.status){
@@ -26,7 +26,6 @@ module.exports.index = async (req, res) => {
         filterStatus[index].class = "active";
     }
     
-    console.log(req.query.status);
     let find = {
         deleted: false 
     };
@@ -37,8 +36,6 @@ module.exports.index = async (req, res) => {
     
     const products = await Product.find(find);
 
-
-    console.log(products);
     res.render("admin/pages/products/index", {
         pageTitle: "Products",
         products: products,
