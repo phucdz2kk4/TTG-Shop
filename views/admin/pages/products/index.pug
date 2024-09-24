@@ -1,0 +1,47 @@
+extends ../../layouts/default.pug
+
+block main 
+    h1.padding List product
+
+    .card.mb3-3.margin2
+        .card.sett.padding Search and Filter 
+        .card.body
+                .btn-group-toggle.no-boder.edit.padding(data-toggle='buttons')
+                    each item in filterStatus
+                        button(
+                            class=`btn btn-outline-success margin ${item.class}` 
+                            button-status=item.status
+                         ) #{item.name}
+                        //- button(class='btn btn-outline-success margin' button-status="active") Active
+                        //- button(class='btn btn-outline-success margin' button-status="inactive") Inactive 
+
+    table.table.sett.margin2
+        thead
+            tr
+                th(scope='col') Number 
+                th(scope='col') Image 
+                th(scope='col') Title
+                th(scope='col') Price
+                th(scope='col') Status
+                th(scope='col') Action
+        tbody
+         each item, index in products 
+            tr
+                td #{index + 1}
+                td 
+                 img(
+                    src=item.thumbnail
+                    alt=item.title
+                    width="100px"
+                    height="auto"
+                )
+                td #{item.title}
+                td #{item.priceNew}
+                td 
+                 if(item.status == "active")
+                    a(href="#" class="badge badge-success") Active
+                 else
+                    a(href="#" class="badge badge-danger") Inactive
+                td 
+                 button.btn.btn-primary.btn-sm.set(type='button') Edit
+                 button.btn.btn-secondary.btn-sm.set(type='button') Delete
