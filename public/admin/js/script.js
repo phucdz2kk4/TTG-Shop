@@ -25,13 +25,18 @@ if(buttonStatus.length > 0){
 // End Button Status
 
 //form search 
+
+
 const formSearch = document.querySelector("#form-search");
+console.log(formSearch);
+
 if(formSearch){
-    let url = URL(window.location.href);
+    let url = new URL(window.location.href);
 
     formSearch.addEventListener("submit", (e) => {
         e.preventDefault();
         const keyword = e.target.elements.keyword.value;
+
         if(keyword){
             url.searchParams.set("keyword", keyword);
         }else{
