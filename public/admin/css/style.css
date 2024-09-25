@@ -70,3 +70,18 @@
 .margin2{
     margin: 25px;
 }
+/* taskbar search */
+.width{
+    width: 20%;
+    margin: 3px;
+}
+.width1{
+    width: 13%;
+}
+.all{
+    display: flex;
+    justify-content: space-between;
+}
+.input-group{
+    width: 95%;
+}

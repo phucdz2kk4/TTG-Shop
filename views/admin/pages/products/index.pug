@@ -6,14 +6,28 @@ block main
     .card.mb3-3.margin2
         .card.sett.padding Search and Filter 
         .card.body
-                .btn-group-toggle.no-boder.edit.padding(data-toggle='buttons')
-                    each item in filterStatus
-                        button(
-                            class=`btn btn-outline-success margin ${item.class == 'active' ? 'active' : ''}` 
-                            button-status=item.status
-                         ) #{item.name}
-                        //- button(class='btn btn-outline-success margin' button-status="active") Active
-                        //- button(class='btn btn-outline-success margin' button-status="inactive") Inactive 
+                .btn-group-toggle.no-boder.edit.padding.all(data-toggle='buttons')
+                    .col6.width1
+                        each item in filterStatus
+                            button(
+                                class=`btn btn-outline-success margin ${item.class == 'active' ? 'active' : ''}` 
+                                button-status=item.status
+                            ) #{item.name}
+                    .col6.width 
+                     from(id="form-search")
+                        .input-group 
+                            input(
+                                type="text"
+                                placeholder="Keyword"
+                                name="keyword"
+                                class="form-control"
+                            )
+                            .input-group-append
+                                button(
+                                    class="btn btn-success"
+                                    type="submit" 
+                                ) Search
+
 
     table.table.sett.margin2
         thead

@@ -4,7 +4,7 @@ const buttonStatus = document.querySelectorAll('[button-status]');
 
 if(buttonStatus.length > 0){
     let url = new URL(window.location.href);
-    console.log(url);
+    // console.log(url);
     
 
     buttonStatus.forEach(button => {
@@ -21,8 +21,15 @@ if(buttonStatus.length > 0){
         })
 
     })
-
-
 }
-
 // End Button Status
+
+//form search 
+const formSearch = document.querySelector("#form-search");
+if(formSearch){
+    formSearch.addEventListener("submit", (e) => {
+        e.preventDefault();
+        console.log(e.target.elements.keyword.value);
+    })
+}
+// end form search
