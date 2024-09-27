@@ -5,36 +5,35 @@ const filterStatusHelper = require("../../helpers/filterStatus"); // filter stat
 const searchHelper = require("../../helpers/search");
 // [GET] /admin/products
 module.exports.index = async (req, res) => {
+  const filterStatus = filterStatusHelper(req.query); // filter status used
 
-    const filterStatus = filterStatusHelper(req.query); // filter status used
+  console.log("QUERY::::::::");
 
-    // call find trong database
-    let find = {
-        deleted: false,
-    };
-    
-    if (req.query.status) {
-        find.status = req.query.status;
-    }
-    
-    // tinh nang search
-    const objectSearch = searchHelper(req.query); // search used
+  // call find trong database
+  let find = {
+    deleted: false,
+  };
 
-    if(objectSearch.regex){
-        find.title = objectSearch.regex;
-    }
+  if (req.query.status) {
+    find.status = req.query.status;
+  }
 
-    // end search 
-    const products = await Product.find(find);
-    
+  // tinh nang search
+  const objectSearch = searchHelper(req.query); // search used
 
-    // link to view
-    res.render("admin/pages/products/index", {
-     // nem bien sang pug de su dung
-        pageTitle: "Products",
-        products: products,
-        filterStatus: filterStatus,
-        keyword : objectSearch.keyword
-    })
-    
-}
+  if (objectSearch.keyword) {
+    find.title = objectSearch.title;
+  }
+
+  // end search
+  const products = await Product.find(find);
+
+  // link to view
+  res.render("admin/pages/products/index", {
+    // nem bien sang pug de su dung
+    pageTitle: "Products",
+    products: products,
+    filterStatus: filterStatus,
+    keyword: objectSearch.keyword,
+  });
+};
