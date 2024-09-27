@@ -1,33 +1,18 @@
 extends ../../layouts/default.pug
+include ../../mixins/filter-status.pug
+include ../../mixins/search.pug
 
 block main 
     h1.padding List product
 
-    .card.mb3-3.margin2
+    .card.mb3-3.margin2.width3
         .card.sett.padding Search and Filter 
         .card.body
                 .btn-group-toggle.no-boder.edit.padding.all(data-toggle='buttons')
                     .col6.width1
-                        each item in filterStatus
-                            button(
-                                class=`btn btn-outline-success margin ${item.class == 'active' ? 'active' : ''}` 
-                                button-status=item.status
-                            ) #{item.name}
-                    .col6.width 
-                     form(id="form-search")
-                        .input-group 
-                            input(
-                                type="text"
-                                placeholder="Input Search"
-                                name="keyword"
-                                class="form-control"
-                            )
-                            .input-group-append
-                                button(
-                                    class="btn btn-success"
-                                    type="submit" 
-                                ) Search
-
+                     +filter-status(filterStatus)
+                    .col6.width
+                     +search(keyword)
 
     table.table.sett.margin2
         thead

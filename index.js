@@ -4,7 +4,7 @@ require('dotenv').config(); // dau' file
 
 const database = require("./config/database"); // link database
 
-const systemConfig = require("./config/system"); //
+const systemConfig = require("./config/system"); // link config
 
 // link route
 const routeAdmin = require("./routes/admin/index.route"); 
@@ -19,11 +19,11 @@ const port = process.env.PORT // used to hidden port
 app.set('view engine', 'pug');
 
 // Thiết lập thư mục chứa các file view
-app.set('views', './views');
+app.set('views', './views'); // auto vao file view
 
 
 // app locals variables
-app.locals.prefixAdmin = systemConfig.prefixAdmin;
+app.locals.prefixAdmin = systemConfig.prefixAdmin; // dan vao prefixAdmin de su dung
 
 app.use(express.static("public")); // auto di vao public
 
