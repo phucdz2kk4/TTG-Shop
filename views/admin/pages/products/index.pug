@@ -44,3 +44,10 @@ block main
                 td 
                  button.btn.btn-primary.btn-sm.set(type='button') Edit
                  button.btn.btn-secondary.btn-sm.set(type='button') Delete
+
+    nav
+        ul.pagination
+            - for(var i = 1; i <= pagination.totalPage; i++)
+                li(class= `page-item ${pagination.currentPage == i ? "active" : ""}`)
+                    button.page-link(href='#') #{i}
+  
