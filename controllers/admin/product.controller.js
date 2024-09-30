@@ -7,7 +7,7 @@ const searchHelper = require("../../helpers/search");
 module.exports.index = async (req, res) => {
   const filterStatus = filterStatusHelper(req.query); // filter status used
 
-  console.log("QUERY::::::::");
+
 
     // call find trong database
     let find = {
