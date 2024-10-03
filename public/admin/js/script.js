@@ -2,10 +2,10 @@
 
 const buttonStatus = document.querySelectorAll('[button-status]');
 
+// filter buttons change color and change link
 if(buttonStatus.length > 0){
     let url = new URL(window.location.href);
     // console.log(url);
-    
 
     buttonStatus.forEach(button => {
         button.addEventListener('click', () => {
@@ -25,8 +25,6 @@ if(buttonStatus.length > 0){
 // End Button Status
 
 //form search 
-
-
 const formSearch = document.querySelector("#form-search");
 console.log(formSearch);
 
