@@ -61,6 +61,14 @@ block main
     
     +pagination(pagination)
 
+    form(
+        action=""
+        method="GET"
+        id="form-change-status"
+        data-path=`${prefixAdmin}/products/change-status`
+    )
+
+
 
     script(src="/admin/js/product.js")
 

@@ -1,15 +1,26 @@
 // change status 
-const buttonsChangeStatus = document.querySelectorAll('[btn-change-status]');
+const buttonsChangeStatus = document.querySelectorAll("[button-change-status]");
 if(buttonsChangeStatus.length > 0){
-    buttonsChangeStatus.addEventListener('click', () =>{
-        const statusCurrent = buttons.getAttribute('data-status-current');
-        const id = button.getAttribute('data-id');
+    const formChangeStatus = document.querySelector("#form-change-status");
+    const path = formChangeStatus.getAttribute("data-path");
 
-        let statusChange = statusCurrent == 'active' ? 'inactive' : 'active';
+    buttonsChangeStatus.forEach(button => {
+        button.addEventListener("click", () =>{
+            const statusCurrent = button.getAttribute("data-status");
+            const id = button.getAttribute("data-id");
+    
+            let statusChange = statusCurrent == "active" ? "inactive" : "active";
+    
+            // console.log(statusCurrent);
+            // console.log(id);
+            // console.log(statusChange);
+    
+            const action = path +  `/${statusChange}/${id}`;
+            formChangeStatus.ation = action;
+            console.log(action);
 
-        console.log(statusChange);
-        console.log(statusCurrent);
-        console.log(id);
+            formChangeStatus.submit();
+        })
     })
 }
 // end change status 

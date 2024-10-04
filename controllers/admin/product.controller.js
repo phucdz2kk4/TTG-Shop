@@ -54,10 +54,11 @@ module.exports.index = async (req, res) => {
 };
 
 // [GET] /admin/products/change-status/:id
-module.exports.changeStatus = (req, res) => {
-  console.log(req.params);
-  const id = req.params.id;
+module.exports.changeStatus = async (req, res) => {
   const status = req.params.status;
- 
-  res.send(`${status} - ${id}`);
+  const id = req.params.id;
+
+  await Product.updateOne({_id: id}, {status: status});
+
+  res.redirect("/admin/products");
 }
