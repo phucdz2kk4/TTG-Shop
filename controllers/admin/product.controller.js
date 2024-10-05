@@ -2,9 +2,11 @@ const Product = require("../../models/product.model"); // link to database
 
 const filterStatusHelper = require("../../helpers/filterStatus"); // filter status
 
-const searchHelper = require("../../helpers/search"); // tinh nang search 
+const searchHelper = require("../../helpers/search"); // tinh nang search
 
 const paginationHelper = require("../../helpers/pagination"); // tinh nang pagination
+
+const mongoose = require("mongoose"); // link to database
 // [GET] /admin/products
 module.exports.index = async (req, res) => {
   const filterStatus = filterStatusHelper(req.query); // filter status used
@@ -29,7 +31,7 @@ module.exports.index = async (req, res) => {
   //current (trang hien tai)
   //limit (so luong muon lay moi trang)
   const countProducts = await Product.countDocuments(find); // tao bien count, dung truoc modal luon phai dung async await
-  
+
   // pagination
   let objectPagination = paginationHelper(
     {
@@ -38,9 +40,11 @@ module.exports.index = async (req, res) => {
     },
     req.query, // get information from URL
     countProducts
-)
+  );
 
-  const products = await Product.find(find).limit(objectPagination.limitItems).skip(objectPagination.skip);
+  const products = await Product.find(find)
+    .limit(objectPagination.limitItems)
+    .skip(objectPagination.skip);
 
   // link to view
   res.render("admin/pages/products/index", {
@@ -55,10 +59,12 @@ module.exports.index = async (req, res) => {
 
 // [GET] /admin/products/change-status/:id
 module.exports.changeStatus = async (req, res) => {
-  const status = req.params.status;
-  const id = req.params.id;
+  const status = req.params.status.toString().trim();
+  const id = req.params.id.trim();
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).send("Invalid ID");
+  }
 
-  await Product.updateOne({_id: id}, {status: status});
-
+  await Product.updateOne({ _id: id.toString() }, { status: status });
   res.redirect("/admin/products");
-}
+};

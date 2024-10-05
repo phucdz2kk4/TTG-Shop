@@ -41,24 +41,24 @@ block main
                         if(item.status == "active")
                             a(
                                 href="javascript:;"
-                                data-status=item.status 
-                                data-id=item.id 
-                                button-change-status 
+                                data-status=item.status
+                                data-id=item.id
+                                button-change-status
                                 class="badge badge-success"
                             ) Active
                         else
                             a(
                                 href="javascript:;"
-                                data-status=item.status 
-                                data-id=item.id 
-                                button-change-status 
+                                data-status=item.status
+                                data-id=item.id
+                                button-change-status
                                 class="badge badge-danger"
                             ) Inactive
                     td 
                         button.btn.btn-primary.btn-sm.set(type='button') Edit
                         button.btn.btn-secondary.btn-sm.set(type='button') Delete
 
-    
+
     +pagination(pagination)
 
     form(
@@ -72,5 +72,5 @@ block main
 
     script(src="/admin/js/product.js")
 
- 
+
 
