@@ -15,8 +15,8 @@ if(buttonsChangeStatus.length > 0){
             // console.log(id);
             // console.log(statusChange);
     
-            const action = path +  `/${statusChange}/${id}`;
-            formChangeStatus.ation = action;
+            const action = path +  `/${statusChange}/${id}?_method=PATCH`; 
+            formChangeStatus.action = action;
             console.log(action);
 
             formChangeStatus.submit();
@@ -25,3 +25,26 @@ if(buttonsChangeStatus.length > 0){
 }
 // end change status 
 
+// Delete item
+const buttonsDelete = document.querySelectorAll("[button-delete]");
+if(buttonsDelete.length > 0) {
+        const formDeleteItem = document.querySelector("#form-delete-item");
+    const path = formDeleteItem.getAttribute("data-path");
+    
+    buttonsDelete.forEach(button => {
+        button.addEventListener("click", () => {
+            const isConfirm = confirm("Are you sure you want to delete this item?");
+
+            if(isConfirm){
+                const id = button.getAttribute("data-id");
+
+                const action = `${path}/${id}?_method=DELETE`;
+
+                formDeleteItem.action = action;
+
+                formDeleteItem.submit();
+            }
+        })
+    })
+}
+// End delete item
