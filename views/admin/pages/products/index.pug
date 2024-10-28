@@ -19,7 +19,15 @@ block main
     .card.mb-3.margin2.width3
         h5.card-header List
             .card-body
-             +form-change-multi(`${prefixAdmin}/products/change-multi?_method=PATCH`)
+                .row 
+                 .col-8 
+                  +form-change-multi(`${prefixAdmin}/products/change-multi?_method=PATCH`)
+                 .col-4.edit2
+                  a(
+                    href=`${prefixAdmin}/products/create`
+                    class="btn btn-outline-success"
+                  ) + Add new
+
 
     table(
         class="table sett margin2"
@@ -61,17 +69,17 @@ block main
                         if(item.status == "active")
                             a(
                                 href="javascript:;"
-                                data-status=item.status 
-                                data-id=item.id 
-                                button-change-status 
+                                data-status=item.status
+                                data-id=item.id
+                                button-change-status
                                 class="badge badge-success"
                             ) Active
                         else
                             a(
                                 href="javascript:;"
-                                data-status=item.status 
-                                data-id=item.id 
-                                button-change-status 
+                                data-status=item.status
+                                data-id=item.id
+                                button-change-status
                                 class="badge badge-danger"
                             ) Inactive
                     td 
@@ -82,7 +90,7 @@ block main
                             data-id=item.id
                         ) Delete
 
-    
+
     +pagination(pagination)
 
     form(
@@ -101,5 +109,5 @@ block main
 
     script(src="/admin/js/product.js")
 
- 
+
 

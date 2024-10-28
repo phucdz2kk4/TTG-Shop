@@ -1,4 +1,4 @@
-// change status 
+// change status
 const buttonsChangeStatus = document.querySelectorAll("[button-change-status]");
 if(buttonsChangeStatus.length > 0){
     const formChangeStatus = document.querySelector("#form-change-status");
@@ -17,7 +17,7 @@ if(buttonsChangeStatus.length > 0){
     
             const action = path +  `/${statusChange}/${id}?_method=PATCH`; 
             formChangeStatus.action = action;
-            console.log(action);
+            // console.log(action);
 
             formChangeStatus.submit();
         })

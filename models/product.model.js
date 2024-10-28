@@ -10,7 +10,8 @@ const productSchema = new mongoose.Schema(
         thumbnail:String,
         stock:Number,
         status:String,
-        deleted:Boolean
+        deleted:Boolean,
+        deletedAt:Date 
     }
 );
 const Product = mongoose.model('Product', productSchema, 'TTG-shop-Db');

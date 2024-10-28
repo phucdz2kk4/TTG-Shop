@@ -1,0 +1,82 @@
+extends ../../layouts/default.pug
+
+block main
+    h1(class="mb-4 margin2") Add new product
+
+    form(
+        action=`${prefixAdmin}/products/create`,
+        id="form-create-product",
+        method="POST",
+    )
+    div(class="form-group margin2")
+        label(for="title") Title 
+        input(
+            type="text",
+            class="form-control",
+            id="title",
+            name="title",
+            required
+        )
+    div(class="form-group margin2")
+        label(for="desc") Descriptions 
+        textarea(
+            class="form-control",
+            id="title",
+            name="description",
+            rows="5",
+        )
+    div(class="form-group margin2")
+        label(for="price") Price
+        input(
+            type="number",
+            class="form-control",
+            id="price",
+            name="price",
+            value="0",
+            min="0",
+        )
+    div(class="form-group margin2")
+        label(for="discount") % Discount
+        input(
+            type="number",
+            class="form-control",
+            id="discount",
+            name="discountPercentage",
+            value="0",
+            min="0",    
+        )
+    div(class="form-group margin2")
+        label(for="thumbnail") Image
+        input(
+            type="text",
+            class="form-control",
+            id="thumbnail",
+            name="thumbnail", 
+        ) 
+    div(class="form-group form-check form-check-inline margin2")
+        input(
+            type="radio",
+            class="form-check-input",
+            id="statusActive",
+            name="status",
+            value="active",
+            checked 
+        )
+        label(for="statusInActive" class="form-check-label") Active
+    div(class="form-group form-check form-check-inline margin2")
+        input(
+            type="radio",
+            class="form-check-input",
+            id="statusInActive",
+            name="status",
+            value="inactive",
+            checked 
+        )
+        label(for="statusInActive" class="form-check-label") Inactive
+    div(class="form-group margin2")
+        button(
+            type="submit",
+            class="btn btn-primary",
+        ) Create New
+
+    script(src="/admin/js/product.js")

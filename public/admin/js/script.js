@@ -21,7 +21,7 @@ if(buttonStatus.length > 0){
 
 //form search 
 const formSearch = document.querySelector("#form-search");
-console.log(formSearch);
+// console.log(formSearch);
 if(formSearch){
     let url = new URL(window.location.href);
     formSearch.addEventListener("submit", (e) => {
@@ -94,6 +94,17 @@ if(formchangeMulti){
         const inputCheckmulti = document.querySelector("[checkbox-multi]");
         const inputCheckItem = inputCheckmulti.querySelectorAll("input[name='id']:checked");
         // console.log(inputCheckItem);
+
+        const typeChange = e.target.elements.type.value;
+
+        if(typeChange == "delete-all"){
+            const isConfirm = confirm("Are you sure you want to delete all selected items?");
+
+            if(!isConfirm){
+                return;
+            }
+        }
+
         if(inputCheckItem.length > 0){
             let ids = [];
             const inputIds = formchangeMulti.querySelector("input[name='ids']");

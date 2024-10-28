@@ -88,3 +88,8 @@
 .width3{
     width: 99%;
 }
+.edit2{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
